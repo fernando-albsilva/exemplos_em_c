@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/*funcao que ordena utilizando o metodo da selecao*/
+
+void ordena_selecao(int*,int);
+
+/*funcao para imprimir o vetor*/
+
+void imprime_vetor(int *,int);
+
+/*funcao para leitura do vetor*/
+
+void leitura_vetor(int *,int );
+
+
+
+
+void main(void)
+{
+    /*declaracao das variaveis*/
+
+    int *v, tamanho_v, i,teste=1;
+    
+    
+    /*comando 'do while' utilizado para testar o codigo mais de uma vez sem precisar compilar novamente*/
+   
+    do
+    {
+
+        /* le o tamanho do vetor e aloca dinamicamente */
+        printf(" \n Digite o tamanho do vetor :");
+        scanf("%d", &tamanho_v);
+
+        v = (int *)malloc(tamanho_v * sizeof(int));
+        if (v == NULL)
+        {
+            printf("\n Memoria insuficiente.\n");
+            exit(1);
+        }
+
+        /*chama a funcao para entrar com so dados do vetor */
+
+        leitura_vetor(v,tamanho_v);
+
+        /* chama a funcao para ordenar o vetor com o metodo da selecao*/
+
+        ordena_selecao(v, tamanho_v);
+
+        printf("\n Vetor ordenado no metodo da selecao : \n");
+
+        /*chama a funcao que imprimi o vetor*/
+
+        imprime_vetor(v, tamanho_v);
+
+        /*libera a memoria alocada anteriormente*/
+
+        free(v);
+
+        
+        /*le a variavel 'teste' caso queirar executar o codigo novamente */
+
+        printf("\n Digite 1 para testar novamente ou qualquer outro numero inteiro seguida de enter para encerrar");
+        scanf("%d",&teste);
+
+    } while (teste == 1);
+}
+
+void ordena_selecao(int *v,int n)
+{
+    int i,j,aux;
+
+    for (i=0; i < (n-1); i++)
+    {
+        
+        for(j=(i+1); j < n; j++)
+        {
+            if (v[i] > v[j])
+            {
+                aux=v[i];
+                v[i]=v[j];
+                v[j]=aux;
+
+            }
+        }
+    }
+}
+
+void imprime_vetor(int *v,int n)
+{
+    int i;
+
+     for(i=0;i < n;i++)
+    {
+        printf("\n v[%d] = %d\n",i,v[i]);
+        
+    }
+}
+
+void leitura_vetor(int *v,int n)
+{
+    int i;
+
+    for (i = 0; i < n; i++)
+        {
+            
+            printf("\n Digite v[%d] =", i);
+            scanf("%d", &v[i]);
+        }
+}

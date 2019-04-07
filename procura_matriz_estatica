@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void main (void)
+{
+   float mat[3][3],procura;
+    int i,j;
+
+    //leitura
+
+    for (i=0;i<3;i++)
+    {
+        for(j=0;j<3;j++)
+        {
+            printf("\n Digite mat [%d][%d] = ",i,j);
+            scanf("%f",&mat[i][j]);
+
+        }
+    }
+
+
+    
+
+
+     for (i=0;i<3;i++)
+    {
+       printf("\n\n");
+
+        for(j=0;j< 3;j++)
+        {
+            printf("%f  ",mat[i][j]);
+           
+
+        }
+    }
+    
+
+   printf("\n Digite o numero que quer procurar\n");
+   scanf("%f",&procura);
+
+   for (i=0;i<3;i++)
+    {
+       
+
+        for(j=0;j< 3;j++)
+        {
+            if (mat[i][j] == procura )
+            {
+                printf(" o valor procurado esta na linha %d coluna %d \n",i+1,j+1);
+                
+            }
+           
+
+        }
+    }
+
+}
+
